@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #111318;
+  --color-lime: #C8F169;
+  --color-paper: #F7F7F0;
+  --color-risk: #D6453D;
+  --color-warn: #E39B1B;
+  --font-display: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: calc(100% - 3px); }
+}
+
+.scanline {
+  animation: scan 1.4s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanline {
+    animation: none;
+  }
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  header, footer, form, .no-print {
+    display: none !important;
+  }
+}
